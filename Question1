@@ -1,0 +1,25 @@
+//Question1 Solution:
+
+public String truncate(String OrderDetails,int maxLength)
+	{
+		String output="";
+		final String TRUNCATE = "... (truncated) ...";
+		
+		int inputLength = OrderDetails.length();
+		if(maxLength <  TRUNCATE.length())
+		{
+			output = OrderDetails;
+		}
+		else if(inputLength < maxLength)
+		{
+			output = OrderDetails;
+		}
+		else
+		{
+			output = OrderDetails.substring(0, 2) + " ";
+			output += TRUNCATE + " ";
+			output += OrderDetails.substring(inputLength-3, inputLength-1) ;
+		}
+			
+		return output;
+	}
