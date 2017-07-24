@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# $0 [input file] [translation file] [output file]
+
+mapfile -t < "$2"
+expr=""
+for keyvalue in "${MAPFILE[@]}"
+do
+  if [[ $keyvalue =~ (.+)=(.+) ]]
+  then
+     k="${BASH_REMATCH[1]}"
+     v="${BASH_REMATCH[2]}"
+     expr="$expr s/\[\[$k\]\]/$v/g;"
+  fi
+done
+sed "$expr" "$1" > "$3"
